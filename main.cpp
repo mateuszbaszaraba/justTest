@@ -20,5 +20,16 @@ inline double wspy(double wspolrzedna)
 int main() {
     double x1 = 100, y1 = 100;
     cout << "x = " << wspx(x1) << " y = " << wspy(y1) << endl;
+
+    poczatek_x = 20;
+    poczatek_y = -500;
+
+    cout << "Przesuniecie poczatku (x=20, y=-500)" << endl;
+    cout << "x = " << wspx(x1) << " y = " << wspy(y1) << endl;
+
+    cout << "Zmiana skali (x = 0.5)" << endl;
+    skala_x = 0.5;
+    cout << "x = " << wspx(x1) << " y = " << wspy(y1) << endl;
+
     return 0;
 }
