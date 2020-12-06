@@ -24,4 +24,5 @@ void blue() {
     static int num = 100;
     cout << "Blue: " << num << endl;
     ++num;
+
 }
