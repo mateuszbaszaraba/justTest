@@ -1,28 +1,26 @@
+//
+// Created by Mateusz Baszaraba on 08/12/2020.
+//
 #include <iostream>
+#include "nagl.h"
 
 using namespace std;
 
-void red();
-void blue();
+int ile_pigmejow = 9;
+
 int main() {
-    red();
-    blue();
-    red();
-    red();
-    blue();
+    cout << "Początek programu" << endl;
+    funkcja_francuska();
+    funkcja_niemiecka();
+    cout << "Koniec programu" << endl;
 
     return 0;
 }
 
-void red() {
-    static int num;
-    ++num;
-    cout << "Red: " << num << endl;
+void funkcja_etiopska() {
+    cout << " etipska ";
 }
 
-void blue() {
-    static int num = 100;
-    cout << "Blue: " << num << endl;
-    ++num;
-
+void funkcja_kenijska() {
+    cout << " kenijska ";
 }
