@@ -3,23 +3,15 @@
 //
 #include <iostream>
 
+#define DDZ(color, data) int player_##color##_##data
+
 using namespace std;
 
-constexpr  double mile_na_kilometry(double mil)
-{
-    return (1.609344 * mil);
-}
-
 int main() {
-    constexpr double dystans_m = 2614;
-    constexpr double dystans_km = mile_na_kilometry(dystans_m);
 
-    cout << "dystans paryz - dakar to " << dystans_km << " km." << endl;
+    DDZ(green, height) {40};  // int player_green_height {40}
 
-    for(int m = 100; m < 600; m += 200)
-    {
-        cout << m << " mil odpowiada " << mile_na_kilometry(m) << " km." << endl;
-    }
+    cout << player_green_height;
 
     return 0;
 }
