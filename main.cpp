@@ -6,30 +6,47 @@
 
 using namespace std;
 
-void multiply(int howMany, long t[]);
+enum class Tetap {
+    nic, scenopis, proba_czytana, proba_kamerowa, nagranie, montaz, postsynchron
+};
+
+void stan_realizacji(Tetap s[], int ile, int dzien);
 int main() {
-    constexpr int size {8192};
-    long vidmo[size];
+    const int liczba_scen = 10;
+    Tetap scena[liczba_scen] = {Tetap::scenopis, Tetap::proba_czytana, Tetap::proba_kamerowa};
 
-    for(int i=0; i<size; i++)
-    {
-        vidmo[i] = i;
-        if(i<6)
-            cout << "vidmo[" << i << "]= " << vidmo[i] << endl;
-    }
+    int dzien_realizacji = 1;
 
-    multiply(size, vidmo+3);
-    cout << "After multiply \n";
-    for(int i = 0; i < 9; i++)
-    {
-        cout << "vidmo[" << i << "]= " << vidmo[i] << endl;
-    }
+    scena[2] = Tetap::nagranie;
+    scena[5] = Tetap::montaz;
+    scena[9] = Tetap::nagranie;
+    scena[4] = Tetap::proba_kamerowa;
+    stan_realizacji(scena, liczba_scen, dzien_realizacji);
+
+    dzien_realizacji++;
+
+    using Tetapp = Tetap; //nowy alians, zmiana nazwy
+
+    scena[1] = Tetapp::proba_kamerowa;
+    scena[5] = Tetapp::postsynchron;
+    scena[0] = Tetapp::scenopis;
+    scena[8] = Tetapp::scenopis;
+    stan_realizacji(scena, liczba_scen, dzien_realizacji);
 
     return 0;
 }
 
-void multiply(int howMany, long t[])
+void stan_realizacji(Tetap s[], int ile, int dzien)
 {
-    for(int i = 0; i < howMany; i++)
-        t[i] *= 2;
+    cout << dzien << ". dzien realizacji filmu reklamowego\n" << "Stan realizacji: \n";
+    for(int i = 0; i < ile; i++)
+    {
+        cout << "Scena nr " << i << ", ";
+        int zaawansowanie = static_cast<int> (s[i]);  //rzutowanie
+        for (int j = 0; j < zaawansowanie; j++)
+        {
+            cout << "#";
+        }
+        cout << endl;
+    }
 }
