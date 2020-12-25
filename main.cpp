@@ -3,24 +3,58 @@
 //
 
 #include <iostream>
-#include <cstring>
 
 using namespace std;
 
+void disArr(char arr[][15], int w, int k);
+
 int main() {
 
-    char tekst[] = { "what do you want to do" };
-    char komunikat[120];
+    constexpr int w {3};
+    constexpr int k {15};
+    char shelf[w][k] {};
 
-    strcpy(komunikat, tekst);
-    cout << komunikat << endl;
+    char znak = '!';
 
-    strncpy(komunikat, "123456789128j0d18", 9);
-    cout << komunikat << endl;
+    /*
+    for (int i=0; i<w; ++i)
+    {
+        for(int j=0; j<k; ++j)
+        {
+            shelf[i][j] = znak++;
+        }
+    }
+     */
 
-    strcpy(komunikat, "nothinggg");
-    cout << komunikat << endl;
+    for(auto & i : shelf)
+    {
+        for(auto & j : i)
+        {
+            j = znak++;
+        }
+    }
+
+    /*    // range based for
+    for(auto & el : shelf)
+    {
+        for(auto & ell : el) {
+            cout << ell;
+        }
+    }
+     */
+
+    disArr(shelf, w, k);
 
     return 0;
 }
 
+void disArr(char arr[][15], int w, int k)
+{
+    for (int i=0; i<w; ++i)
+    {
+        for(int j=0; j<k; ++j)
+        {
+            cout << arr[i][j];
+        }
+    }
+}
