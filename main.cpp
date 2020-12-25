@@ -3,58 +3,54 @@
 //
 
 #include <iostream>
+#include <string>
+#include <iomanip>
+#include <vector>
 
 using namespace std;
 
-void disArr(char arr[][15], int w, int k);
-
+void changeVec(vector<vector<int>> &v);
+void disVec(vector<vector<int>> v, string info);
 int main() {
 
-    constexpr int w {3};
-    constexpr int k {15};
-    char shelf[w][k] {};
+    vector<vector<int>> worksheet
+            {
+                    { 10, 20, 30 },
+                    { 40, 1250, 260, 50 }
+            };
 
-    char znak = '!';
-
-    /*
-    for (int i=0; i<w; ++i)
-    {
-        for(int j=0; j<k; ++j)
-        {
-            shelf[i][j] = znak++;
-        }
-    }
-     */
-
-    for(auto & i : shelf)
-    {
-        for(auto & j : i)
-        {
-            j = znak++;
-        }
-    }
-
-    /*    // range based for
-    for(auto & el : shelf)
-    {
-        for(auto & ell : el) {
-            cout << ell;
-        }
-    }
-     */
-
-    disArr(shelf, w, k);
+    disVec(worksheet, "worksheet");
+    changeVec(worksheet);
+    disVec(worksheet, "worksheet");
 
     return 0;
 }
 
-void disArr(char arr[][15], int w, int k)
+void disVec(vector<vector<int>> v, string info)
 {
-    for (int i=0; i<w; ++i)
+    cout << info << " amount of rows: " << v.size() << endl;
+
+    for(int i=0; i<v.size(); ++i)
     {
-        for(int j=0; j<k; ++j)
+        cout << "Row id: " << i << " length: " << v[i].size() << " -----> |";
+        for(int j=0; j<v[i].size(); ++j)
         {
-            cout << arr[i][j];
+            cout << setw(4) << v[i][j] << " | ";
+        }
+        cout << endl;
+    }
+
+}
+
+void changeVec(vector<vector<int>> &v)
+{
+    cout << "changing..." << endl;
+    for(int i=0; i<v.size(); ++i)
+    {
+        for(int j=0; j<v[i].size(); ++j)
+        {
+            v[i][j] += 100;
         }
     }
+    disVec(v, "changing");
 }
