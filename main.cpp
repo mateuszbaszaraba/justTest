@@ -10,7 +10,7 @@
 using namespace std;
 
 void changeVec(vector<vector<int>> &v);
-void disVec(vector<vector<int>> v, string info);
+void disVec(vector<vector<int>> v, string info = "worksheet");
 int main() {
 
     vector<vector<int>> worksheet
@@ -19,18 +19,23 @@ int main() {
                     { 40, 1250, 260, 50 }
             };
 
-    disVec(worksheet, "worksheet");
+    disVec(worksheet);
     changeVec(worksheet);
-    disVec(worksheet, "worksheet");
+    disVec(worksheet);
     worksheet.resize(1);
-    disVec(worksheet, "worksheet");
+    disVec(worksheet);
     worksheet.resize(6);
     for(int i=1; i < 7; ++i)
     {
         worksheet[i].resize(3);
     }
-    disVec(worksheet, "worksheet");
-
+    disVec(worksheet);
+    worksheet[1].push_back(420);
+    worksheet.push_back({12, 42, 51});
+    disVec(worksheet);
+    worksheet[0].pop_back();
+    worksheet.pop_back();
+    disVec(worksheet);
 
     return 0;
 }
@@ -54,11 +59,12 @@ void disVec(vector<vector<int>> v, string info)
 void changeVec(vector<vector<int>> &v)
 {
     cout << "changing..." << endl;
-    for(int i=0; i<v.size(); ++i)
+
+    for(auto & el : v)
     {
-        for(int j=0; j<v[i].size(); ++j)
+        for(auto & ell : el)
         {
-            v[i][j] += 100;
+            ell += 100;
         }
     }
     disVec(v, "changing");
