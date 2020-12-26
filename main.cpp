@@ -22,6 +22,15 @@ int main() {
     disVec(worksheet, "worksheet");
     changeVec(worksheet);
     disVec(worksheet, "worksheet");
+    worksheet.resize(1);
+    disVec(worksheet, "worksheet");
+    worksheet.resize(6);
+    for(int i=1; i < 7; ++i)
+    {
+        worksheet[i].resize(3);
+    }
+    disVec(worksheet, "worksheet");
+
 
     return 0;
 }
