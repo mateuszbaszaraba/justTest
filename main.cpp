@@ -7,16 +7,23 @@
 using namespace std;
 
 int main() {
-    int num {32};
-    int *pointer = &num;
+    int arri[6];
+    double arrd[6];
 
-    cout << *pointer << endl;
+    int *pi;
+    double *pd;
 
-    num = 45;
-    cout << num << " " << *pointer << endl;
+    pi = &arri[0]; // pi = arri;
+    pd = arrd;
 
-    *pointer = 1;
-    cout << num << " " << *pointer << endl;
+    for(int i=0; i<6; ++i, ++pi, ++pd)
+    {
+        cout << "i = " << i
+        << ") pi = "
+        << reinterpret_cast<unsigned long>(pi)
+        << ", pd = "
+        << reinterpret_cast<unsigned long>(pd) << endl;
+    }
 
     return 0;
 }
