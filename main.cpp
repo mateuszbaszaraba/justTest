@@ -3,55 +3,59 @@
 //
 
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
+void display(const int *p, int amount = 4);
+void change(int *p, int amount = 4);
+void displayArr(int arr[], int amount = 4);
+
 int main() {
 
-    int *pi;
-    double *pd;
+    int arr[4] = {10, 20, 30, 40};
 
-    int arrint[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    double arrdbl[10];
+    cout << "**Before**" <<endl;
+    display(arr);
+    change(arr);
+    cout << "**After**" <<endl;
+    display(arr);
+    cout << "**Random_Check**" << endl;
+    cout << "arr[3] = " << arr[3] << endl;
+    displayArr(arr);
 
-    pd = &arrdbl[0];
+    for(auto &el : arr)
+         el *= 10;
 
-    for(int i=0; i<10; ++i)
-    {
-        *(pd++) = i/10.0;
-    }
+    for(const auto &el : arr)
+        cout << el << endl;
 
-    cout << "Start: " << endl;
-
-    pi = arrint;
-    pd = arrdbl;
-
-    for(int i=0; i<10; ++i)
-    {
-        cout << i << ") \t" << *pi << "\t\t" << *pd << endl;
-        pd++;
-        pi++;
-    }
-
-    pi = &arrint[4];
-    pd = arrdbl + 2;
-
-    for(int i=0; i<3; ++i)
-    {
-        *(pi++) = -222;
-        *(pd++) = 333.3;
-    }
-
-    cout << "Afterlife:" << endl;
-
-    pi = arrint;
-    pd = arrdbl;
-
-    for(int i=0; i<10; ++i)
-    {
-        cout << "arrint[" << i << "] = " << setw(4) << *(pi++) << "\t\tarrdbl[" << i << "] = " << setw(5) << *(pd++) << endl;
-    }
+    display(arr);
 
     return 0;
+}
+
+void display(const int *p, int amount)
+{
+    for(int i=0; i<amount; ++i, ++p)
+    {
+        cout << "arr[" << i << "] = " << *p << endl;
+    }
+
+}
+
+void displayArr( int arr[], int amount)
+{
+    for(int i=0; i<amount; ++i)
+    {
+        cout << arr[i] << endl;
+    }
+
+}
+
+void change(int *p, int amount)
+{
+    for(int i=0; i<amount; ++i, ++p)
+    {
+        *p *= 10;
+    }
 }
