@@ -6,56 +6,36 @@
 
 using namespace std;
 
-void display(const int *p, int amount = 4);
-void change(int *p, int amount = 4);
-void displayArr(int arr[], int amount = 4);
+char *producent(void);
+char *w2;
 
 int main() {
+    char * w1 = new char;
+    w2 = new char;
 
-    int arr[4] = {10, 20, 30, 40};
+    char *w3 = nullptr;
+    w3 = producent();
 
-    cout << "**Before**" <<endl;
-    display(arr);
-    change(arr);
-    cout << "**After**" <<endl;
-    display(arr);
-    cout << "**Random_Check**" << endl;
-    cout << "arr[3] = " << arr[3] << endl;
-    displayArr(arr);
+    char *w4 = producent();
 
-    for(auto &el : arr)
-         el *= 10;
+    *w1 = 'h';
+    *w2 = 'm';
+    *w3 = 'i';
+    cout << "Chars: " << *w1 << *w2 << *w3 << endl << "bin: " << *w4 << endl;
 
-    for(const auto &el : arr)
-        cout << el << endl;
-
-    display(arr);
+    delete w1;
+    delete w2;
+    delete w4;
 
     return 0;
 }
 
-void display(const int *p, int amount)
+char *producent(void)
 {
-    for(int i=0; i<amount; ++i, ++p)
-    {
-        cout << "arr[" << i << "] = " << *p << endl;
-    }
+    char local = 'M';
 
-}
-
-void displayArr( int arr[], int amount)
-{
-    for(int i=0; i<amount; ++i)
-    {
-        cout << arr[i] << endl;
-    }
-
-}
-
-void change(int *p, int amount)
-{
-    for(int i=0; i<amount; ++i, ++p)
-    {
-        *p *= 10;
-    }
+    char *wskaznik;
+    cout << "in progress...";
+    wskaznik = new char;
+    return wskaznik;
 }
