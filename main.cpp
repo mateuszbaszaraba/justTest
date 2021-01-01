@@ -13,22 +13,27 @@ int main() {
     cout << "Size: ";
     cin >> size;
 
-    int *arr = new int[size];
+    auto *arr = new int[size][5];   // int (*arr)[5] = new int[size][5]
+
+    arr[1][3] = 12;
 
     for(int i=0; i<size; ++i)
     {
-        arr[i] = i*10;
+        for(int j=0; j<5; ++j)
+        {
+            arr[i][j] = (i*2)+j;
+        }
     }
-
-    *(arr + 3) = 73;
-    arr[4] = 51;
 
     for(int i=0; i<size; ++i)
     {
-        cout << arr[i] << endl;
+        for(int j=0; j<5; ++j)
+        {
+            //cout << "arr[" << i << "][" << j << "] = " << arr[i][j] << endl;
+            cout << arr[i][j] << "\t";
+        }
+        cout << endl;
     }
-
-    int *arr2 = new int[] {1, 2, 4, 5, 6};
 
     return 0;
 }
