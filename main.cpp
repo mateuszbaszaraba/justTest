@@ -6,36 +6,29 @@
 
 using namespace std;
 
-char *producent(void);
-char *w2;
-
 int main() {
-    char * w1 = new char;
-    w2 = new char;
 
-    char *w3 = nullptr;
-    w3 = producent();
+    int size;
 
-    char *w4 = producent();
+    cout << "Size: ";
+    cin >> size;
 
-    *w1 = 'h';
-    *w2 = 'm';
-    *w3 = 'i';
-    cout << "Chars: " << *w1 << *w2 << *w3 << endl << "bin: " << *w4 << endl;
+    int *arr = new int[size];
 
-    delete w1;
-    delete w2;
-    delete w4;
+    for(int i=0; i<size; ++i)
+    {
+        arr[i] = i*10;
+    }
+
+    *(arr + 3) = 73;
+    arr[4] = 51;
+
+    for(int i=0; i<size; ++i)
+    {
+        cout << arr[i] << endl;
+    }
+
+    int *arr2 = new int[] {1, 2, 4, 5, 6};
 
     return 0;
-}
-
-char *producent(void)
-{
-    char local = 'M';
-
-    char *wskaznik;
-    cout << "in progress...";
-    wskaznik = new char;
-    return wskaznik;
 }
