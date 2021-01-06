@@ -8,41 +8,25 @@ using namespace std;
 
 int main() {
 
-    int a {5};
-    int b {100};
+    int tmp {5};
 
-    int *pa = &a;                           //normal pointer
-    int *const const_p = &a;                //constant pointer
+    auto *a = &tmp;             //int * - wsk do int
+    const auto *b = &tmp;       //const int * - wsk do stałych int
+    auto *const c = &tmp;       //int *const - nieruchomy wsk do int
+    const auto *const d = &tmp; //const int *const - nieruchomy wsk do stałych typu int
 
-    //*const_p++;                           //cannot do that
-    *pa = 1;
-    *const_p = 2;
+    // *b = 6;    error bcs const
+    ++b;
 
-    pa = &b;
-    // const_p = &b;                        // ERROR
+    *c = 6;
+    //++c;  error bcs nieruchomy
 
-    int arr[4] = {0, 1, 2, 3};
-    int tmp;
+    const double obj_con = 100.0;
 
-    int *w;
-    const int *const_p2;
-    w=arr;
-    const_p2=arr;
-
-    tmp = *w;
-    tmp = *const_p2;
-
-    w++;
-    const_p2++;
-
-    *w = 4;
-    //*const_p2 = 5;                        //cannot do that
-
-    cout << *w << "wtf" << *const_p2 << endl;
-
-    int tmp2 = 4;
-
-    const int *const p3 = &tmp2;            //cannot 'move' and change value
+    auto *e = &obj_con;                 //const double *
+    const auto *f = &obj_con;           //const double *
+    auto *const g = &obj_con;           //const double * const
+    const auto *const h = &obj_con;     //const double * const
 
 
     return 0;
