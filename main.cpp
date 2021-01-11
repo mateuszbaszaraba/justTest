@@ -5,29 +5,30 @@
 #include <iostream>
 
 using namespace std;
-
+void sArr(const char tab[]);
+void sPointer(const char *p);
 int main() {
 
-    int tmp {5};
-
-    auto *a = &tmp;             //int * - wsk do int
-    const auto *b = &tmp;       //const int * - wsk do stałych int
-    auto *const c = &tmp;       //int *const - nieruchomy wsk do int
-    const auto *const d = &tmp; //const int *const - nieruchomy wsk do stałych typu int
-
-    // *b = 6;    error bcs const
-    ++b;
-
-    *c = 6;
-    //++c;  error bcs nieruchomy
-
-    const double obj_con = 100.0;
-
-    auto *e = &obj_con;                 //const double *
-    const auto *f = &obj_con;           //const double *
-    auto *const g = &obj_con;           //const double * const
-    const auto *const h = &obj_con;     //const double * const
-
+    char warning[80] = {"Error number 312"};
+    cout << "*Arr*" << endl;
+    sArr(warning);
+    cout << endl << "*Pointer*" << endl;
+    sPointer(warning);
 
     return 0;
+}
+
+void sArr(const char arr[]) {
+    int n = 0;
+    while(arr[n])
+    {
+        cout << arr[n++] << "-";
+    }
+}
+
+void sPointer(const char *p) {
+    while(*p)
+    {
+        cout << *(p++) << "-";
+    }
 }
