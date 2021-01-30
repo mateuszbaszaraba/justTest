@@ -3,40 +3,26 @@
 //
 
 #include <iostream>
+#include "que.h"
 
 using namespace std;
 
-class Car {
-    public:
-        string brand;
-        string model;
-        int year;
-        int mileage;
-
-        void add_car()
-        {
-            cout << "Add new car!" << endl;
-            cout << "Brand: " << endl;
-            cin >> brand;
-            cout << "Model: " << endl;
-            cin >> model;
-            cout << "Year: " << endl;
-            cin >> year;
-            cout << "Mileage: " << endl;
-            cin >> mileage;
-        }
-
-        void show_car()
-        {
-            cout << "Brand: " << brand << " | Model: " << model << " | Year: " << year << " | Mileage: " << mileage << endl;
-        }
-};
 
 int main() {
 
-    Car c1;
-    c1.add_car();
-    c1.show_car();
+    Question q[2];
+    int points_sum = 0;
+
+    for(int i=0; i<2; i++)
+    {
+        q[i].que_num = i+1;
+        q[i].readFromFile();
+        q[i].showQue();
+        q[i].checkAns();
+        points_sum += q[i].points;
+    }
+
+    cout << "POINTS = " << points_sum << endl;
 
     return 0;
 }
