@@ -5,30 +5,38 @@
 #include <iostream>
 
 using namespace std;
-void sArr(const char tab[]);
-void sPointer(const char *p);
+
+class Car {
+    public:
+        string brand;
+        string model;
+        int year;
+        int mileage;
+
+        void add_car()
+        {
+            cout << "Add new car!" << endl;
+            cout << "Brand: " << endl;
+            cin >> brand;
+            cout << "Model: " << endl;
+            cin >> model;
+            cout << "Year: " << endl;
+            cin >> year;
+            cout << "Mileage: " << endl;
+            cin >> mileage;
+        }
+
+        void show_car()
+        {
+            cout << "Brand: " << brand << " | Model: " << model << " | Year: " << year << " | Mileage: " << mileage << endl;
+        }
+};
+
 int main() {
 
-    char warning[80] = {"Error number 312"};
-    cout << "*Arr*" << endl;
-    sArr(warning);
-    cout << endl << "*Pointer*" << endl;
-    sPointer(warning);
+    Car c1;
+    c1.add_car();
+    c1.show_car();
 
     return 0;
-}
-
-void sArr(const char arr[]) {
-    int n = 0;
-    while(arr[n])
-    {
-        cout << arr[n++] << "-";
-    }
-}
-
-void sPointer(const char *p) {
-    while(*p)
-    {
-        cout << *(p++) << "-";
-    }
 }
