@@ -3,4 +3,4 @@ project(justtest)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(justtest main.cpp event.cpp)
+add_executable(justtest main.cpp car.cpp)
