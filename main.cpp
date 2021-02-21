@@ -1,54 +1,30 @@
 #include <iostream>
-#include <vector>
-#include "car.h"
+#include <string>
+#include "Tekran_alfanumeryczny.h"
+#include "Tprzyrzad.h"
 
-using namespace std;
-
-vector<Tcar> cars;
-vector<Tcar> rentingCars;
-
-void initCars(vector<Tcar> &);
-void showCars(vector<Tcar> &);
-void chooseCar(vector<Tcar> &, vector<Tcar> &);
+Tekran_alfanumeryczny ekran('.');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main() {
+    ekran.wyczysc();
+    Tprzyrzad Pred(2, 1, "predkosc", "wezlow", 110);
+    Tprzyrzad Vari(2, 7, "wznoszenie", "stopy/sek");
+    Tprzyrzad A;
+    Tprzyrzad B {};
+    volatile Tprzyrzad C;
+    const Tprzyrzad Udzw(2,11,"udzwig max", "ton", 15000);
 
-    initCars(cars);
-    showCars(cars);
-    chooseCar(cars, rentingCars);
-
+    for(int i=0; i<30; ++i)
+    {
+        Vari.zmien_wskazanie(i);
+        Pred.zmien_wskazanie(110+i);
+        A.zmien_wskazanie(-i);
+        B.zmien_wskazanie(i%4);
+    }
 
     return 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void initCars(vector<Tcar> &cars)
-{
-    Tcar c1 {"BMW", "e46", 10000.00};
-    Tcar c2 {"Mercedes", "w204", 200000.00};
-    Tcar c3 {"Ford", "Kuga", 180000.00};
-    Tcar c4 {"Mercedes", "A140", 20000.00};
-
-    cars.push_back(c1);
-    cars.push_back(c2);
-    cars.push_back(c3);
-    cars.push_back(c4);
-}
-
-void showCars(vector<Tcar> &cars)
-{
-    cout << string(6, '*') << "Which of these cars do you want to rent?" << string(6, '*') << endl;
-    for(int i=0; i<cars.size(); ++i)
-    {
-        cout << "[" << i << "] ";
-        cars[i].getInfo();
-    }
-}
-
-void chooseCar(vector<Tcar> &, vector<Tcar> &)
-{
-    cout << ".";
-}
