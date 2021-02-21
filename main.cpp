@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 #include "Tekran_alfanumeryczny.h"
 #include "Tprzyrzad.h"
 
 Tekran_alfanumeryczny ekran('.');
+void zwloka(double sekund);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,9 +24,17 @@ int main() {
         Pred.zmien_wskazanie(110+i);
         A.zmien_wskazanie(-i);
         B.zmien_wskazanie(i%4);
+        zwloka(0.2);
     }
 
     return 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+void zwloka(double sekund)
+{
+    time_t poczatkowy_czas = time(nullptr);
+    while(time(nullptr) - poczatkowy_czas < sekund);
+}
