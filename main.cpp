@@ -1,69 +1,53 @@
 #include <iostream>
+#include <string>
+
+int fun(int m, int n) {return n*m;}
+
+
+class Ttest
+{
+    const double stala;
+    int n;
+    char c = '%';
+    std::string nazwa;
+    int & przezwisko;
+
+public:
+    Ttest(int pp, double dd, char znak, int &ref);
+
+    Ttest(std::string tekst, double liczba, int &ref) : stala{liczba}, n{12}, c{'#'}, nazwa{tekst}, przezwisko(ref){};
+
+    Ttest(int liczba, int &ref) : stala{0.1 *fun(liczba, ref)}, n{22*fun(ref, 4)}, nazwa{"proba.txt"}, przezwisko{ref}{};
+
+    void opisz()
+    {
+        std::cout << "skladniki obiektu: stala = " << stala << ", n=" << n
+                << ", c=[" << c << "], nazwa=[" << nazwa << "], przezwisko="
+                << przezwisko << std::endl;
+    }
+
+};
+
+Ttest::Ttest(int pp, double dd, char znak, int &ref) : stala{dd}, c{znak}, przezwisko(ref)
+{
+    n = pp;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main() {
-    char *w1 = new char {'x'};
-    std::cout << *w1 << std::endl;
+    int skrytka = 100;
+    int poletko = 5;
 
-    auto *p1 {new int {3213}};
-    std::cout << *p1 << std::endl;
+    Ttest obiekt1{10, 3.14, '@', skrytka};
+    obiekt1.opisz();
 
-    const auto *p2 {new const int {51124}};
-    std::cout << *p2 << std::endl;
+    Ttest obiekt2{"plik.txt", 7.21, poletko};
+    obiekt2.opisz();
 
-    delete w1;
-    delete p1;
-    delete p2;
-
-    int *wtab = new int[5];
-    for(int i=0; i<5; ++i)
-        wtab[i] = i;
-
-    for(int j=0; j<5; ++j)
-        std::cout << wtab[j];
-
-    delete [] wtab;
-
-    std::cout << std::endl;
-
-    int *wtab2 {new int[8] {1,5,6,7,3,2}};
-
-    for(int k=0; k<8; ++k)
-        std::cout << wtab2[k] << "\t";
-
-    delete [] wtab2;
-
-
-
-    std::cout << "how many";
-    int howmany;
-    std::cin >> howmany;
-
-    int *p_arr {new int[howmany]};
-
-    for(int c=0; c<howmany; ++c)
-        p_arr[c] = c;
-
-    for(int d=0; d<howmany; ++d)
-        std::cout<<p_arr[d];
-
-
-
-    std::cout << "array 2d\n how many rows: ";
-    int rows;
-    std::cin >> rows;
-
-    int (*p_arr2d)[6] = new int[rows][6];    // auto *tab = new int[rows][6]
-
-    for(int s=0; s<rows; ++s)
-        for(int f=0; f<6; ++f)
-        {
-            p_arr2d[s][f] = s;
-            std::cout << p_arr2d[s][f];
-        }
-
-
+    Ttest obiekt3{33, poletko};
+    obiekt3.opisz();
 
     return 0;
 }
